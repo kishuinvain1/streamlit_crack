@@ -17,7 +17,7 @@ def load_image():
         
 
 
-def predict(model):
+def predict(model, path):
 	return model.predict(path).json()
 	
 	
@@ -31,7 +31,7 @@ def main():
 	result = st.button('Run on image')
 	if result:
 		st.write('Calculating results...')
-		#results = predict(model, "/home/kishore/Desktop/Verifygn_Tech/9_crack_detection_2/Fleet-Crack-2.v2i.folder/train/Crack/0000.rf.151752c1ef8868d48500e83601531186.jpg")
+		results = predict(model, "/home/kishore/Desktop/Verifygn_Tech/9_crack_detection_2/Fleet-Crack-2.v2i.folder/train/Crack/0000.rf.151752c1ef8868d48500e83601531186.jpg")
 		#results = predict(model)
 		st.write(results["predictions"][0]["predictions"][0]["class"])
 		st.write(results["predictions"][0]["predictions"][0]["confidence"])
