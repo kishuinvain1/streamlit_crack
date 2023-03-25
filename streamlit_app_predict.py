@@ -37,20 +37,19 @@ def main():
         url = st.text_input('URL', 'http://...')
         st.write('Image URL is: ', url)
         result = st.button('Run on image')
-	if result:
-		st.write('Calculating results...')
-		results = predict(model, url)
-		#results = predict(model, path)
-		st.write(results["predictions"][0]["predictions"][0]["class"])
-		st.write(results["predictions"][0]["predictions"][0]["confidence"])
-		#print(results["predictions"][0]["predictions"][0]["class"])
-		#print(results["predictions"][0]["predictions"][0]["confidence"])
+        if result:
+	        st.write('Calculating results...')
+	        results = predict(model, url)
+	        #results = predict(model, path)
+	        st.write(results["predictions"][0]["predictions"][0]["class"])
+	        st.write(results["predictions"][0]["predictions"][0]["confidence"])
+	        #print(results["predictions"][0]["predictions"][0]["class"])
+	        #print(results["predictions"][0]["predictions"][0]["confidence"])
 		
 
 
     
     
-
 
 if __name__ == '__main__':
     main()
