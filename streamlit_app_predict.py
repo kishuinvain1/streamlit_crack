@@ -42,8 +42,8 @@ def main():
 	        st.write('Calculating results...')
 	        results = predict(model, url)
 	        #results = predict(model, path)
-		cls_res = results["predictions"][0]["predictions"][0]["class"]
-		conf_res = results["predictions"][0]["predictions"][0]["confidence"]
+                cls_res = results["predictions"][0]["predictions"][0]["class"]
+                conf_res = results["predictions"][0]["predictions"][0]["confidence"]
                 if(cls_res == "Crack" and conf_res <= 0.57):
 		        cls_res = "No-Crack"
 
