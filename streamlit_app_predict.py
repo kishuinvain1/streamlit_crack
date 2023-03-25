@@ -35,7 +35,7 @@ def main():
         st.title('Pretrained model demo')
         st.write('Enter the image URL')
         url = st.text_input('URL', 'http://...')
-	st.write('Image URL is: ', url)
+        st.write('Image URL is: ', url)
         result = st.button('Run on image')
 	if result:
 		st.write('Calculating results...')
