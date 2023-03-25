@@ -24,34 +24,34 @@ def load_image():
 
 
 def predict(model, url):
-	#return model.predict(path).json()
-	return model.predict(url, hosted=True).json()
+    #return model.predict(path).json()
+    return model.predict(url, hosted=True).json()
 	
 	
 def main():
-        rf = Roboflow(api_key="SNxIPCnRCYWXUM9lBAp4")
-        project = rf.workspace().project("fleet-crack-2-wg5qy")
-        model = project.version(1).model
-        st.title('Crack Detection Demo')
-        image = load_image()
-        st.write('Enter the image URL')
-        url = st.text_input('URL', 'http://...')
-        st.write('Image URL is: ', url)
-        result = st.button('Run on image')
-        if result:
-	        st.write('Calculating results...')
-	        results = predict(model, url)
-	        #results = predict(model, path)
-	        cls_res = results["predictions"][0]["predictions"][0]["class"]
-	        conf_res = results["predictions"][0]["predictions"][0]["confidence"]
-                if(cls_res == "Crack" and conf_res <= 0.57):
-		        cls_res = "No-Crack"
+    rf = Roboflow(api_key="SNxIPCnRCYWXUM9lBAp4")
+    project = rf.workspace().project("fleet-crack-2-wg5qy")
+    model = project.version(1).model
+    st.title('Crack Detection Demo')
+    image = load_image()
+    st.write('Enter the image URL')
+    url = st.text_input('URL', 'http://...')
+    st.write('Image URL is: ', url)
+    result = st.button('Run on image')
+    if result:
+        st.write('Calculating results...')
+        results = predict(model, url)
+        #results = predict(model, path)
+        cls_res = results["predictions"][0]["predictions"][0]["class"]
+        conf_res = results["predictions"][0]["predictions"][0]["confidence"]
+        if(cls_res == "Crack" and conf_res <= 0.57):
+            cls_res = "No-Crack"
 
-	        st.write(cls_res)
-	        st.write(conf_res)
-	        #print(results["predictions"][0]["predictions"][0]["class"])
-	        #print(results["predictions"][0]["predictions"][0]["confidence"])
-		
+        st.write(cls_res)
+        st.write(conf_res)
+        #print(results["predictions"][0]["predictions"][0]["class"])
+        #print(results["predictions"][0]["predictions"][0]["confidence"])
+
 
 
     
