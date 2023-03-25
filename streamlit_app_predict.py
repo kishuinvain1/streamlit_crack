@@ -23,7 +23,7 @@ def load_image():
 
 
 
-def predict(model, url)
+def predict(model, url):
 	#return model.predict(path).json()
 	return model.predict(path, hosted=True).json()
 	
