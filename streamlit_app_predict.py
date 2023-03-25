@@ -1,6 +1,7 @@
 import streamlit as st
 from roboflow import Roboflow
 from pathlib import Path
+import os
 
 
 
@@ -13,7 +14,11 @@ def load_image():
     if uploaded_file is not None:
         image_data = uploaded_file.getvalue()
         st.image(image_data)
-        print(Path.cwd())
+	name = image_data.name
+	path = os.path.abspath(name)
+        print("abs path")
+	print(path)
+	#print(Path.cwd())
         
 
 
