@@ -32,7 +32,8 @@ def main():
         rf = Roboflow(api_key="SNxIPCnRCYWXUM9lBAp4")
         project = rf.workspace().project("fleet-crack-2-wg5qy")
         model = project.version(1).model
-        st.title('Pretrained model demo')
+        st.title('Crack Detection Demo')
+	image = load_image()
         st.write('Enter the image URL')
         url = st.text_input('URL', 'http://...')
         st.write('Image URL is: ', url)
