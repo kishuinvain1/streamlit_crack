@@ -19,7 +19,7 @@ def load_image():
 
 def predict(model):
 	#return model.predict(path).json()
-	return model.predict("https://kishuinvain1-streamlit-crack-streamlit-app-predict-9tmpw9.streamlit.app/~/+/media/edf9973037ae0e2650858998d807c405002cf5ca407d930e6116cda7.jpg").jso()
+	return model.predict("https://kishuinvain1-streamlit-crack-streamlit-app-predict-9tmpw9.streamlit.app/~/+/media/edf9973037ae0e2650858998d807c405002cf5ca407d930e6116cda7.jpg", hosted=True).json()
 	
 	
 def main():
