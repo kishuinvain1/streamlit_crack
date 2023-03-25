@@ -44,7 +44,7 @@ def main():
 	        #results = predict(model, path)
 	        cls_res = results["predictions"][0]["predictions"][0]["class"]
 	        conf_res = results["predictions"][0]["predictions"][0]["confidence"]
-		if(cls_res == "Crack" and conf_res <= 0.57):
+                if(cls_res == "Crack" and conf_res <= 0.57):
 		        cls_res = "No-Crack"
 
 	        st.write(cls_res)
