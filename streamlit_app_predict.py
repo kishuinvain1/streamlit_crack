@@ -12,7 +12,7 @@ def load_image():
     
     print(uploaded_file)
     if uploaded_file is not None:
-	image_data = uploaded_file.getvalue()
+        image_data = uploaded_file.getvalue()
 	st.image(image_data)
 	name = image_data.name
 	path = os.path.abspath(name)
