@@ -18,7 +18,7 @@ def load_image():
         path = os.path.abspath(name)
         print("abs path")
         print(path)
-	return path
+        return path
         #print(Path.cwd())
 
 
