@@ -29,18 +29,28 @@ def predict(model, url):
 	
 	
 def main():
+    #Model api for fleet-crack trained on 25_03_23	
     rf = Roboflow(api_key="SNxIPCnRCYWXUM9lBAp4")
     project = rf.workspace().project("fleet-crack-2-wg5qy")
     model = project.version(1).model
+    
+    #Model api for FleetGuard trained on 27_03_23
+    rf2 = Roboflow(api_key="uhDFc9G6MKjrEvbfHt6B")
+    project2 = rf2.workspace().project("fleetguard")
+    model2 = project2.version(1).model
+
+
+# infer on an image hosted elsewhere
+# print(model.predict("URL_OF_YOUR_IMAGE", hosted=True, confidence=40, overlap=30).json())
+    
     st.title('Crack Detection Demo')
     image = load_image()
     st.write('Enter the image URL')
-    url = st.text_input('URL', 'http://...')
-    st.write('Image URL is: ', url)
-    result = st.button('Run on image')
+    url = st.text_input('URL', '')
+    result = st.button('Predict')
     if result:
         st.write('Calculating results...')
-        results = predict(model, url)
+        results = predict(model2, url)
         #results = predict(model, path)
         cls_res = results["predictions"][0]["predictions"][0]["class"]
         conf_res = results["predictions"][0]["predictions"][0]["confidence"]
