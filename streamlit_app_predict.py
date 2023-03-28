@@ -22,7 +22,7 @@ def load_image():
         with open(uploaded_file.name,'wb') as f:
             f.write(uploaded_file.read())
 
-        return path, f
+            return path, f
         #print(Path.cwd())
 
 def drawBoundingBox(url ,x, y, w, h, cl, cf):
