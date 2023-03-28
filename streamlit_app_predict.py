@@ -28,7 +28,7 @@ def load_image():
         #print(Path.cwd())
 
 def drawBoundingBox(saved_image ,x, y, w, h, cl, cf):
-    #img = Image.open(url)
+    img = Image.open(saved_image)
     #img = cv2.imread(url)
     x = int(x)
     y = int(y)
@@ -36,7 +36,7 @@ def drawBoundingBox(saved_image ,x, y, w, h, cl, cf):
     h = int(h)
     start_pnt = (x,y)
     end_pnt = (x+w, y+h)
-    img = cv2.rectangle(saved_image, start_pnt, end_pnt, (0, 0, 255), 3)
+    img = cv2.rectangle(img, start_pnt, end_pnt, (0, 0, 255), 3)
 
 	
     
@@ -86,8 +86,7 @@ def main():
         print("printing saved image")
         print(svd_img)
         #st.image(svd_img.name, "saved image")
-        saved_image = svd_img.name
-        drawBoundingBox(saved_image ,x, y, w, h, cl, cnf)
+        drawBoundingBox(svd_img.name ,x, y, w, h, cl, cnf)
         
        
         #st.image(res_img, caption='Resulting Image')
