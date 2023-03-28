@@ -82,7 +82,7 @@ def main():
         cl = results['predictions'][0]['class']
         cnf = results['predictions'][0]['confidence']
         drawBoundingBox(url ,x, y, w, h, cl, cnf)
-	st.image(svd_img, "saved image")
+        st.image(svd_img, "saved image")
        
         #st.image(res_img, caption='Resulting Image')
         
