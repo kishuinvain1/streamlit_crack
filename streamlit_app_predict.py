@@ -25,7 +25,7 @@ def load_image():
 def drawBoundingBox(url ,x, y, w, h, cl, cf):
     img = Image.open(url)	
 	
-    st.image(img, caption='Resulting Image')	
+    st.image(url, caption='Resulting Image')	
     
 	
 
