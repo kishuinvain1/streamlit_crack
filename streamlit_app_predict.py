@@ -23,7 +23,7 @@ def load_image():
         #print(Path.cwd())
 
 def drawBoundingBox(url ,x, y, w, h, cl, cf):
-    img = Image.open(url)	
+    #img = Image.open(url)	
 	
     st.image(url, caption='Resulting Image')	
     
