@@ -94,8 +94,8 @@ def main():
             y = results['predictions'][0]['y']
             w = results['predictions'][0]['width']
             h = results['predictions'][0]['height']
-            cl = results['predictions'][0]['class']
-            cnf = results['predictions'][0]['confidence']
+            #cl = results['predictions'][0]['class']
+            #cnf = results['predictions'][0]['confidence']
             print("printing saved image")
             print(svd_img)
 	
