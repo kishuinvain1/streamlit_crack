@@ -81,7 +81,7 @@ def main():
         st.write('Calculating results...')
         results = predict(model2, svd_img.name)
         print(results)
-        if results['predictions'] is empty:
+        if len(results['predictions']) == 0:
             st.image(svd_img.name)
             st.write("No object is detected")
         else:
