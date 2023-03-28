@@ -54,7 +54,6 @@ def main():
         results = predict(model2, url)
         print(results)
         new_img_pth = results['predictions'][0]['image_path']
-        print(new_img)
         res_img = Image.open(new_img_pth)
         st.image(res_img, caption='Resulting Image')
         #results = predict(model, path)
