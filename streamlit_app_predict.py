@@ -60,9 +60,9 @@ def predict(model, url):
 	
 def main():
     #Model api for fleet-crack trained on 25_03_23	
-    rf = Roboflow(api_key="SNxIPCnRCYWXUM9lBAp4")
-    project = rf.workspace().project("fleet-crack-2-wg5qy")
-    model = project.version(1).model
+    #rf = Roboflow(api_key="SNxIPCnRCYWXUM9lBAp4")
+    #project = rf.workspace().project("fleet-crack-2-wg5qy")
+    #model = project.version(1).model
     
     #Model api for FleetGuard trained on 27_03_23
     rf2 = Roboflow(api_key="uhDFc9G6MKjrEvbfHt6B")
