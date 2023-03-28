@@ -52,7 +52,7 @@ def main():
         st.write('Calculating results...')
         results = predict(model2, url)
         print(results)
-        new_img = results['image_path']
+        new_img = results['predictions']
         print(new_img)
         #results = predict(model, path)
         #cls_res = results["predictions"][0]["predictions"][0]["class"]
