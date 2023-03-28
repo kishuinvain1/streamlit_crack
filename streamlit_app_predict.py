@@ -2,6 +2,7 @@ import streamlit as st
 from roboflow import Roboflow
 from pathlib import Path
 import os
+from PIL import Image
 
 
 
@@ -52,8 +53,10 @@ def main():
         st.write('Calculating results...')
         results = predict(model2, url)
         print(results)
-        new_img = results['predictions'][0]['image_path']
+        new_img_pth = results['predictions'][0]['image_path']
         print(new_img)
+        res_img = Image.open(new_img_pth)
+        st.image(res_img, caption='Resulting Image')
         #results = predict(model, path)
         #cls_res = results["predictions"][0]["predictions"][0]["class"]
         #conf_res = results["predictions"][0]["predictions"][0]["confidence"]
