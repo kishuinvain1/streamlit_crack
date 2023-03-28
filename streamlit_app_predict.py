@@ -28,10 +28,10 @@ def load_image():
         #print(Path.cwd())
 
 def drawBoundingBox(saved_image ,x, y, w, h, cl, cf):
-    img = Image.open(saved_image)
-    img = cv2.cvtColor(img,cv2.COLOR_BGR2RGB)
+    #img = Image.open(saved_image)
+    #img = cv2.cvtColor(img,cv2.COLOR_BGR2RGB)
 
-    #img = cv2.imread(url)
+    img = cv2.imread(saved_image)
     x = int(x)
     y = int(y)
     w = int(w)
