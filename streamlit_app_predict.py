@@ -61,13 +61,13 @@ def main():
         results = predict(model2, url)
         print(results)
         new_img_pth = results['predictions'][0]['image_path']
-	x = results['predictions'][0]['x']
-	y = results['predictions'][0]['y']
-	w = results['predictions'][0]['width']
-	h = results['predictions'][0]['height']
-	cl = results['predictions'][0]['class']
-	cnf = results['predictions'][0]['confidence']
-	drawBoundingBox(url ,x, y, w, h, cl, cf)
+        x = results['predictions'][0]['x']
+        y = results['predictions'][0]['y']
+        w = results['predictions'][0]['width']
+        h = results['predictions'][0]['height']
+        cl = results['predictions'][0]['class']
+        cnf = results['predictions'][0]['confidence']
+        drawBoundingBox(url ,x, y, w, h, cl, cf)
        
         #st.image(res_img, caption='Resulting Image')
         
