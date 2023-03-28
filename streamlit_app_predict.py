@@ -36,8 +36,8 @@ def drawBoundingBox(saved_image ,x, y, w, h, cl, cf):
     y = int(y)
     w = int(w)
     h = int(h)
-    end_pnt = (y,x)
-    start_pnt = (y+w, x+h)
+    start_pnt = (y,x)
+    end_pnt = (y+w, x+h)
     img = cv2.rectangle(img, start_pnt, end_pnt, (0, 0, 255), 3)
 
 	
@@ -71,8 +71,8 @@ def main():
     
     st.title('Crack Detection Demo')
     image, svd_img = load_image()
-    st.write('Enter the image URL')
-    url = st.text_input('URL', '')
+    #st.write('Enter the image URL')
+    #url = st.text_input('URL', '')
     result = st.button('Predict')
     if result:
         st.write('Calculating results...')
