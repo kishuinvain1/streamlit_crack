@@ -30,7 +30,9 @@ def drawBoundingBox(url ,x, y, w, h, cl, cf):
     y = float(y)
     w = float(w)
     h = float(h)
-    img = cv2.rectangle(img, (x,y), (x+w, y+w), color=(0, 0, 255), thickness=3)
+    start_pnt = (x,y)
+    end_pnt = (x+w, y+h)
+    img = cv2.rectangle(img, start_pnt, end_pnt, (0, 0, 255), 3)
 
 	
     
