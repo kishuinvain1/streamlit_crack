@@ -87,8 +87,11 @@ def main():
         cnf = results['predictions'][0]['confidence']
         print("printing saved image")
         print(svd_img)
+	
         #st.image(svd_img.name, "saved image")
         drawBoundingBox(svd_img.name ,x, y, w, h, cl, cnf)
+        st.write(cl)
+        st.write(cnf)
         
        
         #st.image(res_img, caption='Resulting Image')
