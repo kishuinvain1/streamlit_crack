@@ -26,6 +26,10 @@ def load_image():
 def drawBoundingBox(url ,x, y, w, h, cl, cf):
     #img = Image.open(url)
     img = cv2.imread(url)
+    x = float(x)
+    y = float(y)
+    w = float(w)
+    h = float(h)
     img = cv2.rectangle(img, (x,y), (x+w, y+w), color=(0, 0, 255), thickness=3)
 
 	
