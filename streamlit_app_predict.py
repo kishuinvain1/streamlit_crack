@@ -36,8 +36,8 @@ def drawBoundingBox(saved_image ,x, y, w, h, cl, cf):
     y = int(y)
     w = int(w)
     h = int(h)
-    start_pnt = (x,y)
-    end_pnt = (x+w, y+h)
+    start_pnt = (y,x)
+    end_pnt = (y+w, x+h)
     img = cv2.rectangle(img, start_pnt, end_pnt, (0, 0, 255), 3)
 
 	
