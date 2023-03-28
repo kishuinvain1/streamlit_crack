@@ -22,6 +22,13 @@ def load_image():
         return path
         #print(Path.cwd())
 
+def drawBoundingBox(url ,x, y, w, h, cl, cf):
+    img = Image.open(url)	
+	
+    st.image(img, caption='Resulting Image')	
+    
+	
+
 
 
 def predict(model, url):
@@ -54,9 +61,17 @@ def main():
         results = predict(model2, url)
         print(results)
         new_img_pth = results['predictions'][0]['image_path']
-        res_img = Image.open(new_img_pth)
-        st.image(res_img, caption='Resulting Image')
-        #results = predict(model, path)
+	x = results['predictions'][0]['x']
+	y = results['predictions'][0]['y']
+	w = results['predictions'][0]['width']
+	h = results['predictions'][0]['height']
+	cl = results['predictions'][0]['class']
+	cnf = results['predictions'][0]['confidence']
+	drawBoundingBox(url ,x, y, w, h, cl, cf)
+       
+        #st.image(res_img, caption='Resulting Image')
+        
+	#results = predict(model, path)
         #cls_res = results["predictions"][0]["predictions"][0]["class"]
         #conf_res = results["predictions"][0]["predictions"][0]["confidence"]
         #if(cls_res == "Crack" and conf_res <= 0.57):
