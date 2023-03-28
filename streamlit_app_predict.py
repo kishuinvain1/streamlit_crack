@@ -85,7 +85,7 @@ def main():
         cnf = results['predictions'][0]['confidence']
         print("printing saved image")
         print(svd_img)
-        st.image(svd_img.getvalue())	
+        st.image(svd_img.name, "saved image")	
         #drawBoundingBox(url ,x, y, w, h, cl, cnf)
         
        
