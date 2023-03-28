@@ -76,7 +76,7 @@ def main():
     result = st.button('Predict')
     if result:
         st.write('Calculating results...')
-        results = predict(model2, url)
+        results = predict(model2, svd_img.name)
         print(results)
         new_img_pth = results['predictions'][0]['image_path']
         x = results['predictions'][0]['x']
