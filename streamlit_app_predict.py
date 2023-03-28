@@ -11,7 +11,6 @@ import cv2
 
 def load_image():
     uploaded_file = st.file_uploader(label='Pick an image to test')
-    
     print(uploaded_file)
     if uploaded_file is not None:
         image_data = uploaded_file.getvalue()
@@ -20,7 +19,10 @@ def load_image():
         path = os.path.abspath(name)
         print("abs path")
         print(path)
-        return path
+        with open(uploaded_file.name,'wb') as f:
+            f.write(uploaded_file.read())
+
+        return path, f
         #print(Path.cwd())
 
 def drawBoundingBox(url ,x, y, w, h, cl, cf):
@@ -64,7 +66,7 @@ def main():
 # print(model.predict("URL_OF_YOUR_IMAGE", hosted=True, confidence=40, overlap=30).json())
     
     st.title('Crack Detection Demo')
-    image = load_image()
+    image, svd_img = load_image()
     st.write('Enter the image URL')
     url = st.text_input('URL', '')
     result = st.button('Predict')
@@ -80,6 +82,7 @@ def main():
         cl = results['predictions'][0]['class']
         cnf = results['predictions'][0]['confidence']
         drawBoundingBox(url ,x, y, w, h, cl, cnf)
+	st.image(svd_img, "saved image")
        
         #st.image(res_img, caption='Resulting Image')
         
