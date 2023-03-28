@@ -3,6 +3,7 @@ from roboflow import Roboflow
 from pathlib import Path
 import os
 from PIL import Image
+import cv2
 
 
 
@@ -23,9 +24,14 @@ def load_image():
         #print(Path.cwd())
 
 def drawBoundingBox(url ,x, y, w, h, cl, cf):
-    #img = Image.open(url)	
+    #img = Image.open(url)
+    img = cv2.imread(url)
+    img = cv2.rectangle((x,y), (x+w, y+w), color=(0, 0, 255), thickness=3)
+
 	
-    st.image(url, caption='Resulting Image')	
+    
+	
+    st.image(img, caption='Resulting Image')	
     
 	
 
