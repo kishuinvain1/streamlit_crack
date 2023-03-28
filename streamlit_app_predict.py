@@ -16,7 +16,7 @@ def load_image():
     print(uploaded_file)
     if uploaded_file is not None:
         image_data = uploaded_file.getvalue()
-        st.image(image_data)
+        #st.image(image_data)
         name = uploaded_file.name
         path = os.path.abspath(name)
         print("abs path")
@@ -75,13 +75,13 @@ def main():
     
     st.title('Crack Detection Demo')
     image, svd_img = load_image()
-    st.write('Enter the image URL')
-    url = st.text_input('URL', '')
+    #st.write('Enter the image URL')
+    #url = st.text_input('URL', '')
     result = st.button('Predict')
     if result:
         st.write('Calculating results...')
-        #results = predict(model2, svd_img.name)
-        results = predict(model2, url)
+        results = predict(model2, svd_img.name)
+        #results = predict(model2, url)
         print(results)
         if len(results['predictions']) == 0:
             st.image(svd_img.name)
