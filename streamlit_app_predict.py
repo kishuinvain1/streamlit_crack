@@ -67,7 +67,7 @@ def main():
         h = results['predictions'][0]['height']
         cl = results['predictions'][0]['class']
         cnf = results['predictions'][0]['confidence']
-        drawBoundingBox(url ,x, y, w, h, cl, cf)
+        drawBoundingBox(url ,x, y, w, h, cl, cnf)
        
         #st.image(res_img, caption='Resulting Image')
         
