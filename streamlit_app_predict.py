@@ -82,6 +82,7 @@ def main():
         st.write('Calculating results...')
         results = predict(model2, svd_img.name)
         #results = predict(model2, url)
+        print("Prediction Results are...")	
         print(results)
         if len(results['predictions']) == 0:
             st.image(svd_img.name)
