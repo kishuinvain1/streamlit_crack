@@ -20,7 +20,9 @@ def load_image():
         org_img_array = np.array(org_img)
         
         image_data = uploaded_file.getvalue()
-        cv2.imwrite("main_image_uploaded.jpg", org_img_array)
+        cv2.imwrite('main_image_uploaded.jpg', cv2.cvtColor(org_img_array, cv2.COLOR_RGB2BGR))
+
+        #cv2.imwrite("main_image_uploaded.jpg", org_img_array)
         #st.image(image_data)
         name = uploaded_file.name
         path = os.path.abspath(name)
