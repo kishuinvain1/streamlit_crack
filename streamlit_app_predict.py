@@ -16,13 +16,14 @@ def load_image():
     uploaded_file = st.file_uploader(label='Pick an image to test')
     print(uploaded_file)
     if uploaded_file is not None:
-        org_img = Image.open(uploaded_file)
-        org_img_array = np.array(org_img)
+        file_bytes = np.asarray(bytearray(uploaded_file.read()), dtype=np.uint8)
+        opencv_image = cv2.imdecode(file_bytes, 1)
+      
         
         image_data = uploaded_file.getvalue()
-        cv2.imwrite('main_image_uploaded.jpg', cv2.cvtColor(org_img_array, cv2.COLOR_RGB2BGR))
+        
 
-        #cv2.imwrite("main_image_uploaded.jpg", org_img_array)
+      
         #st.image(image_data)
         name = uploaded_file.name
         path = os.path.abspath(name)
@@ -31,7 +32,7 @@ def load_image():
         with open(uploaded_file.name,'wb') as f:
             f.write(uploaded_file.read())
 
-    return path, f
+    return path, opencv_image
         #print(Path.cwd())
 
 
@@ -117,8 +118,7 @@ def main():
         rf2 = Roboflow(api_key="uhDFc9G6MKjrEvbfHt6B")
         project2 = rf2.workspace().project("fleetguard")
         model2 = project2.version(1).model
-        #results = predict(model2, svd_img.name)
-        results = predict(model2, "main_image_uploaded.jpg")
+        results = predict(model2, svd_img.name)
         #results = predict(model2, url)
         print("Prediction Results are...")	
         print(results)
