@@ -15,7 +15,9 @@ def load_image():
     uploaded_file = st.file_uploader(label='Pick an image to test')
     print(uploaded_file)
     if uploaded_file is not None:
+        
         image_data = uploaded_file.getvalue()
+        cv2.imwrite("main_image_uploaded.jpg", image_data)
         #st.image(image_data)
         name = uploaded_file.name
         path = os.path.abspath(name)
@@ -110,7 +112,8 @@ def main():
         rf2 = Roboflow(api_key="uhDFc9G6MKjrEvbfHt6B")
         project2 = rf2.workspace().project("fleetguard")
         model2 = project2.version(1).model
-        results = predict(model2, svd_img.name)
+        #results = predict(model2, svd_img.name)
+	results = predict(model2, "main_image_uploaded.jpg")
         #results = predict(model2, url)
         print("Prediction Results are...")	
         print(results)
