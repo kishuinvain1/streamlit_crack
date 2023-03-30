@@ -47,13 +47,13 @@ def loadSegFormModel():
     return model
 	
 def segFormCrack(cl, x, y, w, h, cnf, saved_image):
-    img = cv2.imread(saved_image)
-    img = cv2.cvtColor(img,cv2.COLOR_BGR2RGB)
+    #img = cv2.imread(saved_image)
+    #img = cv2.cvtColor(img,cv2.COLOR_BGR2RGB)
     x = int(x)
     y = int(y)
     w = int(w)
     h = int(h)
-    roi = img[y-h//2:y+h//2, x-w//2:x+w//2, :]
+    roi = saved_image[y-h//2:y+h//2, x-w//2:x+w//2, :]
     #st.image(roi, caption="ROI")
     cv2.imwrite("saved_ROI.jpg", roi)
     segform_model = loadSegFormModel()
@@ -144,7 +144,7 @@ def main():
             #st.write(cl)
             #st.write(cnf)
             if(cl == "Crack" or cl == "No-Crack"):
-                sem_seg_res = segFormCrack(cl, x, y, w, h, cnf, svd_img.name)
+                sem_seg_res = segFormCrack(cl, x, y, w, h, cnf, svd_img)
 
     elif(result and option == "Zoomed-in"):
         st.write('Calculating results...')
