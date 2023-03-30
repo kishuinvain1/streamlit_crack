@@ -93,10 +93,7 @@ def main():
     #project = rf.workspace().project("fleet-crack-2-wg5qy")
     #model = project.version(1).model
     
-    #Model api for FleetGuard trained on 27_03_23
-    rf2 = Roboflow(api_key="uhDFc9G6MKjrEvbfHt6B")
-    project2 = rf2.workspace().project("fleetguard")
-    model2 = project2.version(1).model
+    
 
 
 # infer on an image hosted elsewhere
@@ -109,6 +106,10 @@ def main():
     result = st.button('Predict')
     if(result and option == "Normal"):
         st.write('Calculating results...')
+        #Model api for FleetGuard trained on 27_03_23
+        rf2 = Roboflow(api_key="uhDFc9G6MKjrEvbfHt6B")
+        project2 = rf2.workspace().project("fleetguard")
+        model2 = project2.version(1).model
         results = predict(model2, svd_img.name)
         #results = predict(model2, url)
         print("Prediction Results are...")	
