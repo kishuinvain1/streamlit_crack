@@ -87,8 +87,7 @@ def predict(model, url):
 def main():
     st.title('Crack Detection Demo')
     option = st.selectbox('Image Type',('Normal', 'Zoomed-in'))
-    st.write('You selected:', option)
-
+   
     #Model api for fleet-crack trained on 25_03_23	
     #rf = Roboflow(api_key="SNxIPCnRCYWXUM9lBAp4")
     #project = rf.workspace().project("fleet-crack-2-wg5qy")
@@ -135,6 +134,14 @@ def main():
             #st.write(cnf)
             if(cl == "Crack" or cl == "No-Crack"):
                 sem_seg_res = segFormCrack(cl, x, y, w, h, cnf, svd_img.name)
+
+    elif(result and option == "Zoomed-in"):
+        segform_model = loadSegFormModel()
+        preds = segform_model.predict(svd_img.name).save("crack_pred.jpg")
+        crck_pred = Image.open('crack_pred.jpg')
+        st.image(crck_pred, caption='crack localization')
+        
+  	
                   
         
        
