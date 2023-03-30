@@ -29,6 +29,12 @@ def load_image():
 
 
 	
+def loadSegFormModel():
+    rf = Roboflow(api_key="uhDFc9G6MKjrEvbfHt6B")
+    project = rf.workspace().project("fleetguardcrack")
+    model = project.version(1).model
+    return model
+	
 def segFormCrack(cl, x, y, w, h, cnf, saved_image):
     img = cv2.imread(saved_image)
     img = cv2.cvtColor(img,cv2.COLOR_BGR2RGB)
@@ -38,6 +44,9 @@ def segFormCrack(cl, x, y, w, h, cnf, saved_image):
     h = int(h)
     roi = img[y-h//2:y+h//2, x-w//2:x+w//2, :]
     st.image(roi, caption="ROI")
+    segform_model = loadSegFormModel()
+    preds = model.predict(roi).json()
+    print(preds)
 	
 def drawBoundingBox(saved_image ,x, y, w, h, cl, cf):
     #img = Image.open(saved_image)
