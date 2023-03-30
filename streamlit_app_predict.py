@@ -59,7 +59,7 @@ def segFormCrack(cl, x, y, w, h, cnf, saved_image):
     st.image(crck_pred, caption='crack localization')
 	
 def drawBoundingBox(saved_image ,x, y, w, h, cl, cf):
-    img = Image.open(saved_image)
+    #img = Image.open(saved_image)
     
 
     img = cv2.imread(img)
