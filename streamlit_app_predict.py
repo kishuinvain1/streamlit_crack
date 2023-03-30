@@ -30,6 +30,7 @@ def load_image():
 
 	
 def loadSegFormModel():
+    print("...loading...segformer..")
     rf = Roboflow(api_key="uhDFc9G6MKjrEvbfHt6B")
     project = rf.workspace().project("fleetguardcrack")
     model = project.version(1).model
