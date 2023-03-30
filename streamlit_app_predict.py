@@ -85,6 +85,9 @@ def predict(model, url):
 	
 	
 def main():
+    option = st.selectbox('Image Type',('Zoomed-in', 'Normal'))
+    st.write('You selected:', option)
+
     #Model api for fleet-crack trained on 25_03_23	
     #rf = Roboflow(api_key="SNxIPCnRCYWXUM9lBAp4")
     #project = rf.workspace().project("fleet-crack-2-wg5qy")
