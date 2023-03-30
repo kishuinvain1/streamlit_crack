@@ -137,6 +137,7 @@ def main():
                 sem_seg_res = segFormCrack(cl, x, y, w, h, cnf, svd_img.name)
 
     elif(result and option == "Zoomed-in"):
+        st.write('Calculating results...')
         segform_model = loadSegFormModel()
         preds = segform_model.predict(svd_img.name).save("crack_pred.jpg")
         crck_pred = Image.open('crack_pred.jpg')
