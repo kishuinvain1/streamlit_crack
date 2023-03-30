@@ -44,9 +44,11 @@ def segFormCrack(cl, x, y, w, h, cnf, saved_image):
     h = int(h)
     roi = img[y-h//2:y+h//2, x-w//2:x+w//2, :]
     st.image(roi, caption="ROI")
-    segform_model = loadSegFormModel()
-    preds = segform_model.predict(roi).json()
-    print(preds)
+    cv2.imwrite("saved_ROI.jpg", roi)
+    st.image(saved_ROI.jpg, caption="saved_ROI")
+    #segform_model = loadSegFormModel()
+    #preds = segform_model.predict(roi).json()
+    #print(preds)
 	
 def drawBoundingBox(saved_image ,x, y, w, h, cl, cf):
     #img = Image.open(saved_image)
