@@ -85,7 +85,8 @@ def predict(model, url):
 	
 	
 def main():
-    option = st.selectbox('Image Type',('Zoomed-in', 'Normal'))
+    st.title('Crack Detection Demo')
+    option = st.selectbox('Image Type',('Normal', 'Zoomed-in'))
     st.write('You selected:', option)
 
     #Model api for fleet-crack trained on 25_03_23	
@@ -102,12 +103,12 @@ def main():
 # infer on an image hosted elsewhere
 # print(model.predict("URL_OF_YOUR_IMAGE", hosted=True, confidence=40, overlap=30).json())
     
-    st.title('Crack Detection Demo')
+    
     image, svd_img = load_image()
     #st.write('Enter the image URL')
     #url = st.text_input('URL', '')
     result = st.button('Predict')
-    if result:
+    if(result and option == "Normal"):
         st.write('Calculating results...')
         results = predict(model2, svd_img.name)
         #results = predict(model2, url)
