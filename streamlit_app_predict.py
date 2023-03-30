@@ -27,6 +27,18 @@ def load_image():
     return path, f
         #print(Path.cwd())
 
+
+	
+def segFormCrack(cl, x, y, w, h, cnf, saved_image):
+    img = cv2.imread(saved_image)
+    img = cv2.cvtColor(img,cv2.COLOR_BGR2RGB)
+    x = int(x)
+    y = int(y)
+    w = int(w)
+    h = int(h)
+    roi = img[y-h//2:y+h//2, x-w//2:x+w//2, :]
+    st.image(roi, caption="ROI")
+	
 def drawBoundingBox(saved_image ,x, y, w, h, cl, cf):
     #img = Image.open(saved_image)
     
@@ -103,6 +115,9 @@ def main():
             drawBoundingBox(svd_img.name ,x, y, w, h, cl, cnf)
             #st.write(cl)
             #st.write(cnf)
+            if(cl == "Crack" or cl == "No-Crack"):
+                sem_seg_res = segFormCrack(cl, x, y, w, h, cnf, svd_img.name)
+                  
         
        
         #st.image(res_img, caption='Resulting Image')
