@@ -139,7 +139,7 @@ def main():
             print("printing saved image")
             print(svd_img)
 	
-            #st.image(svd_img.name, "saved image")
+            #st.image(svd_img, "saved image")
             drawBoundingBox(svd_img,x, y, w, h, cl, cnf)
             #st.write(cl)
             #st.write(cnf)
@@ -149,7 +149,7 @@ def main():
     elif(result and option == "Zoomed-in"):
         st.write('Calculating results...')
         segform_model = loadSegFormModel()
-        preds = segform_model.predict(svd_img.name).save("crack_pred.jpg")
+        preds = segform_model.predict(svd_img).save("crack_pred.jpg")
         crck_pred = Image.open('crack_pred.jpg')
         st.image(crck_pred, caption='crack localization')
         
