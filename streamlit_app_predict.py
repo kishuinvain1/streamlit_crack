@@ -65,8 +65,8 @@ def drawBoundingBox(saved_image ,x, y, w, h, cl, cf):
     #img = Image.open(saved_image)
     
 
-    img = cv2.imread(saved_image)
-    img = cv2.cvtColor(img,cv2.COLOR_BGR2RGB)
+    #img = cv2.imread(saved_image)
+    #img = cv2.cvtColor(img,cv2.COLOR_BGR2RGB)
     x = int(x)
     y = int(y)
     w = int(w)
@@ -77,7 +77,7 @@ def drawBoundingBox(saved_image ,x, y, w, h, cl, cf):
     if(cl == "Crack" or cl == "No-Crack"):
         cl = "Non-Broken"
     
-    img = cv2.rectangle(img, start_pnt, end_pnt, (0,255,0), 10)
+    img = cv2.rectangle(saved_image, start_pnt, end_pnt, (0,255,0), 10)
     img = cv2.putText(img, cl, txt_start_pnt, cv2.FONT_HERSHEY_SIMPLEX, 3, (0, 255, 0), 10, cv2.LINE_AA)
 
 	
