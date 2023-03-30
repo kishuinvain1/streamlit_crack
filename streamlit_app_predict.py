@@ -113,7 +113,7 @@ def main():
         project2 = rf2.workspace().project("fleetguard")
         model2 = project2.version(1).model
         #results = predict(model2, svd_img.name)
-	results = predict(model2, "main_image_uploaded.jpg")
+        results = predict(model2, "main_image_uploaded.jpg")
         #results = predict(model2, url)
         print("Prediction Results are...")	
         print(results)
