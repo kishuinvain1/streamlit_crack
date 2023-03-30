@@ -11,6 +11,8 @@ import numpy as np
 
 
 def load_image():
+    opencv_image = None
+    
     path = None
     f = None
     uploaded_file = st.file_uploader(label='Pick an image to test')
