@@ -16,7 +16,7 @@ def load_image():
     uploaded_file = st.file_uploader(label='Pick an image to test')
     print(uploaded_file)
     if uploaded_file is not None:
-        org_img = Image.open(uploaded_file.name)
+        org_img = Image.open(uploaded_file)
         org_img_array = np.array(org_img)
         
         image_data = uploaded_file.getvalue()
