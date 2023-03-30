@@ -34,7 +34,7 @@ def load_image():
         with open(uploaded_file.name,'wb') as f:
             f.write(uploaded_file.read())
 
-    return path, opencv_image
+    return path, f
         #print(Path.cwd())
 
 
@@ -47,13 +47,13 @@ def loadSegFormModel():
     return model
 	
 def segFormCrack(cl, x, y, w, h, cnf, saved_image):
-    #img = cv2.imread(saved_image)
-    img = cv2.cvtColor(saved_image,cv2.COLOR_BGR2RGB)
+    img = cv2.imread(saved_image)
+    img = cv2.cvtColor(img,cv2.COLOR_BGR2RGB)
     x = int(x)
     y = int(y)
     w = int(w)
     h = int(h)
-    roi = saved_image[y-h//2:y+h//2, x-w//2:x+w//2, :]
+    roi = img[y-h//2:y+h//2, x-w//2:x+w//2, :]
     #st.image(roi, caption="ROI")
     cv2.imwrite("saved_ROI.jpg", roi)
     segform_model = loadSegFormModel()
@@ -62,11 +62,11 @@ def segFormCrack(cl, x, y, w, h, cnf, saved_image):
     st.image(crck_pred, caption='crack localization')
 	
 def drawBoundingBox(saved_image ,x, y, w, h, cl, cf):
-    #img = Image.open(saved_image)
+    img = Image.open(saved_image)
     
 
-    #img = cv2.imread(saved_image)
-    img = cv2.cvtColor(saved_image,cv2.COLOR_BGR2RGB)
+    img = cv2.imread(img)
+    img = cv2.cvtColor(img,cv2.COLOR_BGR2RGB)
     x = int(x)
     y = int(y)
     w = int(w)
@@ -77,7 +77,7 @@ def drawBoundingBox(saved_image ,x, y, w, h, cl, cf):
     if(cl == "Crack" or cl == "No-Crack"):
         cl = "Non-Broken"
     
-    img = cv2.rectangle(saved_image, start_pnt, end_pnt, (0,255,0), 10)
+    img = cv2.rectangle(img, start_pnt, end_pnt, (0,255,0), 10)
     img = cv2.putText(img, cl, txt_start_pnt, cv2.FONT_HERSHEY_SIMPLEX, 3, (0, 255, 0), 10, cv2.LINE_AA)
 
 	
@@ -120,7 +120,7 @@ def main():
         rf2 = Roboflow(api_key="uhDFc9G6MKjrEvbfHt6B")
         project2 = rf2.workspace().project("fleetguard")
         model2 = project2.version(1).model
-        results = predict(model2, svd_img)
+        results = predict(model2, svd_img.name)
         #results = predict(model2, url)
         print("Prediction Results are...")	
         print(results)
@@ -137,19 +137,19 @@ def main():
             cl = results['predictions'][0]['class']
             cnf = results['predictions'][0]['confidence']
             print("printing saved image")
-            print(svd_img)
+            print(svd_img.name)
 	
             #st.image(svd_img, "saved image")
-            drawBoundingBox(svd_img,x, y, w, h, cl, cnf)
+            drawBoundingBox(svd_img.name,x, y, w, h, cl, cnf)
             #st.write(cl)
             #st.write(cnf)
             if(cl == "Crack" or cl == "No-Crack"):
-                sem_seg_res = segFormCrack(cl, x, y, w, h, cnf, svd_img)
+                sem_seg_res = segFormCrack(cl, x, y, w, h, cnf, svd_img.name)
 
     elif(result and option == "Zoomed-in"):
         st.write('Calculating results...')
         segform_model = loadSegFormModel()
-        preds = segform_model.predict(svd_img).save("crack_pred.jpg")
+        preds = segform_model.predict(svd_img.name).save("crack_pred.jpg")
         crck_pred = Image.open('crack_pred.jpg')
         st.image(crck_pred, caption='crack localization')
         
