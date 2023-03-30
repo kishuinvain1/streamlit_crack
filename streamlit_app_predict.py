@@ -140,7 +140,7 @@ def main():
             print(svd_img)
 	
             #st.image(svd_img.name, "saved image")
-            drawBoundingBox(svd_img.name ,x, y, w, h, cl, cnf)
+            drawBoundingBox(svd_img,x, y, w, h, cl, cnf)
             #st.write(cl)
             #st.write(cnf)
             if(cl == "Crack" or cl == "No-Crack"):
